@@ -1,0 +1,56 @@
+{
+ "strategies": [
+  {
+   "label": "NSGA-II (try3)",
+   "folder": "/home1/nvelasquez/Watersheds/GaugedCombined/calibration/crb3_nsga2_try3",
+   "color": "#1f77b4"
+  },
+  {
+   "label": "Sobol (01)",
+   "folder": "/home1/nvelasquez/Watersheds/GaugedCombined/calibration/crb3_01_sobol",
+   "color": "#8c8c8c"
+  },
+  {
+   "label": "TuRBO (02)",
+   "folder": "/home1/nvelasquez/Watersheds/GaugedCombined/calibration/crb3_02_turbo",
+   "color": "#d62728"
+  },
+  {
+   "label": "DDS (03)",
+   "folder": "/home1/nvelasquez/Watersheds/GaugedCombined/calibration/crb3_03_dds",
+   "color": "#2ca02c"
+  },
+  {
+   "label": "MOGP Pareto (04)",
+   "folder": "/home1/nvelasquez/Watersheds/GaugedCombined/calibration/crb3_04_mogp_pareto",
+   "color": "#9467bd"
+  }
+ ],
+ "gauges": [
+  "CraneCreek",
+  "Turkey",
+  "EauGallie",
+  "NorthProngSaintSeb",
+  "SouthProngSaintSeb"
+ ],
+ "metrics": [
+  "NSE",
+  "CPM-7CC726",
+  "CPM-63BF51"
+ ],
+ "metric_names": {
+  "NSE": "NSE",
+  "CPM-7CC726": "Distribution only (CPM-7CC726)",
+  "CPM-63BF51": "High Values (CPM-63BF51)"
+ },
+ "criteria": [
+  "Sum",
+  "NSE",
+  "CPM-7CC726",
+  "CPM-63BF51"
+ ],
+ "bases": {
+  "mean": "Mean of gauges",
+  "gauge": "This gauge"
+ }
+}
