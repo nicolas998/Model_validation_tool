@@ -1,8 +1,8 @@
 """Compare calibration strategies at the IRL gauges.
 
 Run with:  streamlit run app.py
-The compare data folder defaults to DEFAULT_DATA_DIR and can be overridden
-with the COMPARE_DATA_DIR environment variable.
+By default it reads the example data shipped in ./example_data. Point it at
+another compare data folder with the COMPARE_DATA_DIR environment variable.
 """
 
 import json
@@ -15,8 +15,9 @@ import plotly.graph_objects as go
 import streamlit as st
 
 APP_DIR = Path(__file__).resolve().parent
-DEFAULT_DATA_DIR = r"C:\Users\nicol\Projects\2026_IRL_project\compare_data"
-DATA_DIR = Path(os.environ.get("COMPARE_DATA_DIR", DEFAULT_DATA_DIR))
+EXAMPLE_DATA_DIR = APP_DIR / "example_data"
+DATA_DIR = Path(os.environ.get("COMPARE_DATA_DIR", EXAMPLE_DATA_DIR)).resolve()
+USING_EXAMPLE = DATA_DIR == EXAMPLE_DATA_DIR.resolve()
 
 EXTRA_METRICS = {"volume_ratio": "Volume ratio"}  # ideal value 1, not "higher is better"
 DASHES = ["solid", "dash", "dot", "dashdot"]
@@ -158,6 +159,11 @@ series, obs_mean = load_series(DATA_DIR, gauge)
 # --------------------------------------------------------------------------- map
 
 st.title("Calibration strategy comparison")
+if USING_EXAMPLE:
+    st.caption(
+        "Showing the **example data** in `example_data/` (five Indian River Lagoon gauges, 2017–2019). "
+        "Set `COMPARE_DATA_DIR` to use your own."
+    )
 
 map_values = []
 for g in gauges.index:
